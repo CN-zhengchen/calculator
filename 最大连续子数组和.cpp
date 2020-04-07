@@ -13,9 +13,9 @@ int main()
 	int tbd = 0;
 	int right = 0;
 	int pop = 0;
-	printf("==========================================\n      »¶Ó­Ê¹ÓÃ×î´óÁ¬Ğø×ÓÊı×éºÍ¼ÆËãÆ÷\n==========================================\n");
-	printf("ËµÃ÷£º\n     Äú¿ÉÒÔÊäÈëÈÎÒâ¸öÕûÊıÊı×Ö£¬²»ÓÃĞ´ÊäÈë¼¸¸ö£¬´ÓÄúµÚÒ»¸öÕıÈ·ÊäÈëµÄÊı×Ö¿ªÊ¼¼ÆËã£¬°´»Ø³µÖ®ºóÔÙ°´Á½´Îctrl+z½áÊøÊäÈë\n");
-	while (scanf("%c", &input)!=EOF)//¼¸¸öÑ­»·
+	printf("==========================================\n      æ¬¢è¿ä½¿ç”¨æœ€å¤§è¿ç»­å­æ•°ç»„å’Œè®¡ç®—å™¨\n==========================================\n");
+	printf("è¯´æ˜ï¼š\n     æ‚¨å¯ä»¥è¾“å…¥ä»»æ„ä¸ªæ•´æ•°æ•°å­—ï¼Œä¸ç”¨å†™è¾“å…¥å‡ ä¸ªï¼Œä»æ‚¨ç¬¬ä¸€ä¸ªæ­£ç¡®è¾“å…¥çš„æ•°å­—å¼€å§‹è®¡ç®—ï¼ŒæŒ‰å›è½¦ä¹‹åå†æŒ‰ä¸¤æ¬¡ctrl+zç»“æŸè¾“å…¥\n");
+	while (scanf("%c", &input)!=EOF)//å‡ ä¸ªå¾ªç¯
 	{
 		if (input=='\n')
 		{
@@ -23,7 +23,7 @@ int main()
 			{
 				pop = number.front();
 				number.pop();
-				right = right * 10 + pop;//Êä³öµ±Ê±µÄÊı
+				right = right * 10 + pop;//è¾“å‡ºå½“æ—¶çš„æ•°
 			}
 			if (tot % 2 == 1)
 			{
@@ -38,9 +38,11 @@ int main()
 				tbd += right;
 			}
 			ans = max(ans, tbd);
+			if (right != 0)
+			{
+				tot = 0;
+			}
 			right = 0;
-			tot = 0;
-			continue;
 		}
 		else if (input == ' ')
 		{
@@ -48,7 +50,7 @@ int main()
 			{
 				pop = number.front();
 				number.pop();
-				right = right * 10 + pop;//Êä³öµ±Ê±µÄÊı
+				right = right * 10 + pop;//è¾“å‡ºå½“æ—¶çš„æ•°
 			}
 			if (tot % 2 == 1)
 			{
@@ -63,17 +65,19 @@ int main()
 				tbd += right;
 			}
 			ans = max(ans, tbd);
+			if (right != 0)
+			{
+				tot = 0;
+			}
 			right = 0;
-			tot = 0;
-			continue;
 		}
-		else if (input == '-')//Í³¼Æ¸ººÅ
+		else if (input == '-')//ç»Ÿè®¡è´Ÿå·
 		{
 			while (!number.empty())
 			{
 				pop = number.front();
 				number.pop();
-				right = right * 10 + pop;//Êä³öµ±Ê±µÄÊı
+				right = right * 10 + pop;//è¾“å‡ºå½“æ—¶çš„æ•°
 			}
 			if (tot % 2 == 1)
 			{
@@ -88,11 +92,14 @@ int main()
 				tbd += right;
 			}
 			ans = max(ans, tbd);
+			if (right != 0)
+			{
+				tot = 0;
+			}
 			right = 0;
-			tot = 0;
 			tot++;
 		}
-		else if (input-'0'>=0&&input-'0'<=9)//Í³¼ÆÊı×Ö
+		else if (input-'0'>=0&&input-'0'<=9)//ç»Ÿè®¡æ•°å­—
 		{
 			number.push(int(input-'0'));
 		}
@@ -100,23 +107,23 @@ int main()
 		{
 			while (tot--)
 			{
-				error.push('-');//Í³¼ÆÊäÈë¶àÉÙÎŞÓÃ¸ººÅ
+				error.push('-');//ç»Ÿè®¡è¾“å…¥å¤šå°‘æ— ç”¨è´Ÿå·
 			}
 			tot = 0;
-			error.push(input);//¼ÇÂ¼ÊäÈë´íÎó¸ººÅ
+			error.push(input);//è®°å½•è¾“å…¥é”™è¯¯è´Ÿå·
 		}
 	}
 	if (!error.empty())
 	{
-		printf("ÄúÊäÈëµÄÄÚÈİÖĞÓĞ%d´¦´íÎó£¬·Ö±ğÊÇ:\n",error.size());
+		printf("æ‚¨è¾“å…¥çš„å†…å®¹ä¸­æœ‰%då¤„é”™è¯¯ï¼Œåˆ†åˆ«æ˜¯:\n",error.size());
 		while (!error.empty())
 		{
 			printf("%c ", error.front());
 			error.pop();
 		}
-		printf("\nÒÔÉÏ´íÎóÊäÈë²»¼ÆËã\n");
+		printf("\nä»¥ä¸Šé”™è¯¯è¾“å…¥ä¸è®¡ç®—\n");
 	}
-	printf("¸ù¾İÓĞĞ§ÊäÈë£¬¼ÆËã³ö½á¹ûÎª:%d\n",ans);
+	printf("æ ¹æ®æœ‰æ•ˆè¾“å…¥ï¼Œè®¡ç®—å‡ºç»“æœä¸º:%d\n",ans);
 	system("pause");
 	return 0;
 }
